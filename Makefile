@@ -1,3 +1,4 @@
+# Started : 22 april
 INC_DIR	:= inc/
 OBJ_DIR	:= obj/
 BIN_DIR	:= bin/
