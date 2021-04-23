@@ -3,7 +3,7 @@
 void	ra(int **stacks)
 {
 	int	i;
-	int tmp;
+	int	tmp;
 	int	len;
 
 	if (stacks[A][0] < 2)
@@ -19,7 +19,7 @@ void	ra(int **stacks)
 void	rb(int **stacks)
 {
 	int	i;
-	int tmp;
+	int	tmp;
 	int	len;
 
 	if (stacks[B][0] < 2)

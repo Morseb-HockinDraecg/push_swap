@@ -29,4 +29,8 @@ void	rra(int **stacks);
 void	rrb(int **stacks);
 void	rrr(int **stacks);
 
+int		get_next_line(int fd, char **line);
+int		glen(char *str, char c);
+void	gnl_free(char **str);
+
 #endif

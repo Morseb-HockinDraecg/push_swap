@@ -19,5 +19,6 @@ void	two_nbrs(int **stacks);
 void	three_nbrs(int **stacks);
 
 int		is_sort(int **stacks);
+int		*sub_nbr(int **stack);
 
 #endif

@@ -17,4 +17,3 @@ void	instr_rrr(int **stacks)
 	rrr(stacks);
 	write(1, "rrr\n", cm_strlen("rrr\n"));
 }
-

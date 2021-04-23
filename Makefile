@@ -19,10 +19,12 @@ OBJ_P	:= $(SRC_P:$(SRC_P_DIR)%.c=$(OBJ_DIR)%.o)
 
 SRC_DIR	:= src/
 SRC	:= $(SRC_DIR)error_check.c \
-	$(SRC_DIR)utils1.c \
 	$(SRC_DIR)instruc1.c \
 	$(SRC_DIR)instruc2.c \
-	$(SRC_DIR)instruc3.c
+	$(SRC_DIR)instruc3.c \
+	$(SRC_DIR)get_next_line_utils.c \
+	$(SRC_DIR)get_next_line.c \
+	$(SRC_DIR)utils1.c 
 OBJ	:= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 CC		:= gcc
@@ -32,6 +34,7 @@ INCLUDE	:= -Iinc
 
 all: $(NAME_P) $(NAME_C)
 	$(info -------rdy-------)
+	$(info -----------------)
 
 $(NAME_P): $(OBJ) $(OBJ_P)| $(BIN_DIR)
 	$(CC) $(LDFLAGS) $^ -o $@
