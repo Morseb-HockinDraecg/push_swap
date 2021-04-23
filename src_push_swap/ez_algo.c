@@ -8,21 +8,21 @@ void	two_nbrs(int **stacks)
 
 void	three_nbrs(int **stacks)
 {
-	if (stacks[A][1] == 1)
+	if (stacks[A][1] == 0)
 	{
 		instr_sa(stacks);
 		instr_ra(stacks);
 	}
-	else if (stacks[A][1] == 2)
+	else if (stacks[A][1] == 1)
 	{
-		if (stacks[A][1] == 1)
+		if (stacks[A][1] == 0)
 			instr_sa(stacks);
 		else
 			instr_rra(stacks);
 	}
 	else
 	{
-		if (stacks[A][2] == 1)
+		if (stacks[A][2] == 0)
 			instr_ra(stacks);
 		else
 		{

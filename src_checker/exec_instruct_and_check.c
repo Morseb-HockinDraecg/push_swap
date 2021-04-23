@@ -68,8 +68,6 @@ void	exec_instruc(t_list *lst_cmd, int **stacks)
 	while (lst_cmd)
 	{
 		cmd = lst_cmd->content;
-		write(STDOUT_FILENO, cmd, ft_strlen(cmd));
-		write(STDOUT_FILENO, "\n", 1);
 		rang = find_enum(cmd);
 		if (rang > -1)
 			(*arr[rang])(stacks);

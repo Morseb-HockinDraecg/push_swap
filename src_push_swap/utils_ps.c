@@ -37,7 +37,7 @@ static void	fill_substitute(int **substitute, int **stack, int len)
 			if (min[1] > stack[A][fill[1]] && stack[A][fill[1]] > min[0])
 				min[1] = stack[A][fill[1]];
 			if (min[0] == stack[A][fill[1]])
-				(*substitute)[fill[1]] = fill[0];
+				(*substitute)[fill[1]] = fill[0] - 1;
 		}
 		min[0] = min[1];
 		min[1] = INT_MAX;
