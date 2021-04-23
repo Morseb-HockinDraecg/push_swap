@@ -5,7 +5,9 @@ BIN_DIR	:= bin/
 
 NAME_C	:= $(BIN_DIR)checker
 SRC_C_DIR	:= src_checker/
-SRC_C	:= $(SRC_C_DIR)checker.c
+SRC_C	:= $(SRC_C_DIR)checker.c \
+	$(SRC_C_DIR)exec_instruct_and_check.c \
+	$(SRC_C_DIR)utils_ck.c
 OBJ_C	:= $(SRC_C:$(SRC_C_DIR)%.c=$(OBJ_DIR)%.o)
 
 NAME_P	:= $(BIN_DIR)push_swap
@@ -25,6 +27,14 @@ SRC	:= $(SRC_DIR)error_check.c \
 	$(SRC_DIR)instruc3.c \
 	$(SRC_DIR)get_next_line_utils.c \
 	$(SRC_DIR)get_next_line.c \
+	$(SRC_DIR)ft_lstadd_back.c \
+	$(SRC_DIR)ft_lstclear.c \
+	$(SRC_DIR)ft_lstdelone.c \
+	$(SRC_DIR)ft_lstnew.c \
+	$(SRC_DIR)ft_lstsize.c \
+	$(SRC_DIR)ft_lstlast.c \
+	$(SRC_DIR)ft_strncmp.c \
+	$(SRC_DIR)ft_strlen.c \
 	$(SRC_DIR)utils1.c 
 OBJ	:= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

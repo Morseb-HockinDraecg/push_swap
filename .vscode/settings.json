@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"push_swap.h": "c",
-		"utils.h": "c"
+		"utils.h": "c",
+		"checker.h": "c"
 	}
 }

@@ -1,6 +1,6 @@
 #include "utils.h"
 
-void	rra(int **stacks)
+void	frra(int **stacks)
 {
 	int	i;
 	int	tmp;
@@ -16,7 +16,7 @@ void	rra(int **stacks)
 	stacks[A][1] = tmp;
 }
 
-void	rrb(int **stacks)
+void	frrb(int **stacks)
 {
 	int	i;
 	int	tmp;
@@ -32,8 +32,8 @@ void	rrb(int **stacks)
 	stacks[B][1] = tmp;
 }
 
-void	rrr(int **stacks)
+void	frrr(int **stacks)
 {
-	rra(stacks);
-	rrb(stacks);
+	frra(stacks);
+	frrb(stacks);
 }

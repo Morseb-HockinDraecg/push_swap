@@ -35,6 +35,13 @@ static int	clean_exit(int **stacks, int ret)
 	return (ret);
 }
 
+void	algo(int **stacks)
+{
+	(void)stacks;
+	return ;
+}
+
+	// write_stacks(stacks);
 int	main(int argc, char **argv)
 {
 	int	**stacks;
@@ -49,7 +56,6 @@ int	main(int argc, char **argv)
 		return (clean_exit(stacks, 1));
 	}
 	stacks[A] = sub_nbr(stacks);
-	write_stacks(stacks);
 	if (is_sort(stacks))
 		return (clean_exit(stacks, 0));
 	if (stacks[A][0] == 2)
@@ -57,7 +63,7 @@ int	main(int argc, char **argv)
 	else if (stacks[A][0] == 3)
 		three_nbrs(stacks);
 	else
-		;
+		algo(stacks);
 	if (is_sort(stacks))
 		return (clean_exit(stacks, 0));
 	return (0);

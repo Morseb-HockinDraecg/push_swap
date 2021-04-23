@@ -1,6 +1,6 @@
 #include "utils.h"
 
-void	sa(int **stacks)
+void	fsa(int **stacks)
 {
 	int	tmp;
 
@@ -11,7 +11,7 @@ void	sa(int **stacks)
 	stacks[A][2] = tmp;
 }
 
-void	sb(int **stacks)
+void	fsb(int **stacks)
 {
 	int	tmp;
 
@@ -22,13 +22,13 @@ void	sb(int **stacks)
 	stacks[B][2] = tmp;
 }
 
-void	ss(int **stacks)
+void	fss(int **stacks)
 {
-	sa(stacks);
-	sb(stacks);
+	fsa(stacks);
+	fsb(stacks);
 }
 
-void	pa(int **stacks)
+void	fpa(int **stacks)
 {
 	int	i;
 	int	len;
@@ -48,7 +48,7 @@ void	pa(int **stacks)
 	stacks[B][0]--;
 }
 
-void	pb(int **stacks)
+void	fpb(int **stacks)
 {
 	int	i;
 	int	len;
