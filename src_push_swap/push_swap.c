@@ -35,12 +35,6 @@ static int	clean_exit(int **stacks, int ret)
 	return (ret);
 }
 
-void	algo(int **stacks)
-{
-	(void)stacks;
-	return ;
-}
-
 	// write_stacks(stacks);
 int	main(int argc, char **argv)
 {
@@ -51,10 +45,7 @@ int	main(int argc, char **argv)
 	stacks[B] = (int *)malloc(sizeof(int) * argc);
 	stacks[B][0] = 0;
 	if (!stacks[A])
-	{
-		write(STDERR_FILENO, "Error\n", cm_strlen("Error\n"));
 		return (clean_exit(stacks, 1));
-	}
 	stacks[A] = sub_nbr(stacks);
 	if (is_sort(stacks))
 		return (clean_exit(stacks, 0));

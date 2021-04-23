@@ -38,6 +38,7 @@ int	*cm_error_check(int argc, char **argv)
 	nbrs = loop(&argc, argv);
 	if (argc)
 	{
+		write(STDERR_FILENO, "Error\n", cm_strlen("Error\n"));
 		free(nbrs);
 		return (NULL);
 	}

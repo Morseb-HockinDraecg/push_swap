@@ -17,6 +17,7 @@ SRC_P	:= $(SRC_P_DIR)push_swap.c \
 	$(SRC_P_DIR)instr2.c \
 	$(SRC_P_DIR)instr3.c \
 	$(SRC_P_DIR)utils_ps.c \
+	$(SRC_P_DIR)algo.c \
 	$(SRC_P_DIR)ez_algo.c
 OBJ_P	:= $(SRC_P:$(SRC_P_DIR)%.c=$(OBJ_DIR)%.o)
 
