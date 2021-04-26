@@ -75,6 +75,4 @@ void	exec_instruc(t_list *lst_cmd, int **stacks)
 			clean_exit(stacks, &lst_cmd, 1);
 		lst_cmd = lst_cmd->next;
 	}
-	(void)lst_cmd;
-	(void)stacks;
 }

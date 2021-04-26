@@ -18,6 +18,21 @@ enum	e_stack
 	B,
 };
 
+enum	e_cmd
+{
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr,
+};
+
 int		*cm_error_check(int argc, char **argv);
 int		cm_strlen(char *s);
 int		check_nbr(const char *nptr, int *nb);

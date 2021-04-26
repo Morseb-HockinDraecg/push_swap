@@ -8,10 +8,60 @@ int	is_sort(int **stacks)
 	len = stacks[A][0];
 	i = 0;
 	if (stacks[B][0] > 0)
-		return (0);
+		return (1);
 	while (++i < len)
 		if (stacks[A][i] > stacks[A][i + 1])
-			return (0);
+			return (1);
+	return (0);
+}
+
+static int	to_rsort_algo(int **stacks, int z, int len)
+{
+	int	nb;
+	int	i;
+
+	i = z;
+	nb = 0;
+	while (i > 0)
+	{
+		if (stacks[B][i] == -1)
+			continue ;
+		if (nb + 1 <= stacks[B][i--])
+			nb++;
+	}
+	i = len;
+	while (i > z)
+		if (nb + 1 == stacks[B][i--])
+			nb++;
+	return (nb);
+}
+
+int	to_rsort(int **stacks, int next_nb_to_place)
+{
+	int	min;
+	int	i;
+	int	z;
+	int	len;
+
+	len = stacks[B][0];
+	stacks[B][0] = next_nb_to_place;
+	i = -1;
+	min = INT_MAX;
+	z = 0;
+	while (i++ < len)
+	{
+		if (stacks[B][i] == -1)
+			continue ;
+		if (min > stacks[B][i] && stacks[B][i] != -1)
+		{
+			min = stacks[B][i];
+			z = i;
+		}
+	}
+	z = to_rsort_algo(stacks, z, len);
+	stacks[B][0] = len;
+	if (z == len - 1)
+		return (0);
 	return (1);
 }
 
@@ -53,6 +103,6 @@ int	*sub_nbr(int **stack)
 	substitute = (int *)malloc(sizeof(int) * (len + 1));
 	substitute[0] = len;
 	fill_substitute(&substitute, stack, len);
-	free(*stack);
+	free(stack[A]);
 	return (substitute);
 }

@@ -35,19 +35,19 @@ static int	clean_exit(int **stacks, int ret)
 	return (ret);
 }
 
-	// write_stacks(stacks);
+// write_stacks(stacks);
 int	main(int argc, char **argv)
 {
 	int	**stacks;
 
-	stacks = (int **)malloc(sizeof(int *) * 2);
+	stacks = (int **)malloc(sizeof(int *) * 3);
 	stacks[A] = cm_error_check(argc, argv);
 	stacks[B] = (int *)malloc(sizeof(int) * argc);
 	stacks[B][0] = 0;
 	if (!stacks[A])
 		return (clean_exit(stacks, 1));
 	stacks[A] = sub_nbr(stacks);
-	if (is_sort(stacks))
+	if (!is_sort(stacks))
 		return (clean_exit(stacks, 0));
 	if (stacks[A][0] == 2)
 		two_nbrs(stacks);
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		three_nbrs(stacks);
 	else
 		algo(stacks);
-	if (is_sort(stacks))
+	if (!is_sort(stacks))
 		return (clean_exit(stacks, 0));
 	return (0);
 }
