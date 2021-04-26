@@ -30,8 +30,9 @@ void	bottom_to_b(int **stacks, int to_top)
 		copy_instru(stacks, rra);
 }
 
-void	sort_b(int **stacks)
+void	sort_b(int **stacks, int next_nb_to_place)
 {
-dprintf(2, "=>coucou<=\n");
+	if (to_rsort(stacks, next_nb_to_place))
+		copy_instru(stacks, rrb);
 	(void)stacks;
 }

@@ -29,7 +29,7 @@ int		*sub_nbr(int **stack);
 void	algo(int **stacks);
 void	up_to_b(int **stacks, int to_top);
 void	bottom_to_b(int **stacks, int to_top);
-void	sort_b(int **stacks);
+void	sort_b(int **stacks, int next_nb_to_place);
 void	send_instruc(int **stacks);
 
 #endif

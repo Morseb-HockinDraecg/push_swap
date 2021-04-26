@@ -22,6 +22,7 @@ void	frrb(int **stacks)
 	int	tmp;
 	int	len;
 
+dprintf(2, "=>coucou<=\n");
 	if (stacks[B][0] < 2)
 		return ;
 	len = stacks[B][0];
