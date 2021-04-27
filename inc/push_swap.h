@@ -34,5 +34,6 @@ void	send_instruc(int **stacks);
 int		verif_nb_to_move(int **stacks, int up, int bot);
 void	sort_last_chunk(int **stacks);
 void	clean_b(int **stacks);
+void	loop_algo(int min_max[2], int **stacks);
 
 #endif

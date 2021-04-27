@@ -15,52 +15,45 @@ int	is_sort(int **stacks)
 	return (0);
 }
 
-static int	to_rsort_algo(int **stacks, int z, int len)
+static int	to_rsort_algo(int **stacks, int len, int nb, int i)
 {
-	int	nb;
-	int	i;
+	int	compare[2];
 
-	i = z;
-	nb = 0;
-	while (i > 0)
+	compare[1] = len + 1;
+	if (stacks[B][len] == 0)
+		compare[0] = (unsigned)(compare[1] - stacks[B][1]);
+	else
+		compare[0] = (unsigned)(stacks[B][len] - stacks[B][1]);
+	if (stacks[B][0] - stacks[B][1] < compare[0])
+		nb++;
+	while (++i < len)
 	{
-		if (stacks[B][i] == -1)
-			continue ;
-		if (nb + 1 <= stacks[B][i--])
+		if (stacks[B][len] == 0)
+			compare[0] = (unsigned)(compare[1] - stacks[B][i + 1]);
+		else
+			compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][i + 1]);
+		if (stacks[B][i] - stacks[B][i + 1] < compare[0])
 			nb++;
 	}
-	i = len;
-	while (i > z)
-		if (nb + 1 == stacks[B][i--])
-			nb++;
+	if (stacks[B][len] == 0)
+		compare[0] = (unsigned)(compare[1] - stacks[B][0]);
+	else
+		compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][0]);
+	if (stacks[B][i] - stacks[B][0] < compare[0])
+		nb++;
 	return (nb);
 }
 
 int	to_rsort(int **stacks, int next_nb_to_place)
 {
-	int	min;
-	int	i;
-	int	y;
 	int	len;
+	int	ret;
 
 	len = stacks[B][0];
 	stacks[B][0] = next_nb_to_place;
-	i = -1;
-	min = INT_MAX;
-	y = 0;
-	while (i++ < len)
-	{
-		if (stacks[B][i] == -1)
-			continue ;
-		if (min > stacks[B][i] && stacks[B][i] != -1)
-		{
-			min = stacks[B][i];
-			y = i;
-		}
-	}
-	y = to_rsort_algo(stacks, y, len);
+	ret = to_rsort_algo(stacks, len, 0, 0);
 	stacks[B][0] = len;
-	if (y == len - 1)
+	if (ret == len)
 		return (0);
 	return (1);
 }

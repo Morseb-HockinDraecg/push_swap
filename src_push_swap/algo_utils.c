@@ -32,19 +32,25 @@ void	bottom_to_b(int **stacks, int to_top)
 
 void	sort_b(int **stacks, int next_nb_to_place)
 {
-	if (to_rsort(stacks, next_nb_to_place))
-		copy_instru(stacks, rb);
-	else
+	if (stacks[B][0] < 2)
 	{
-// dprintf(2, "sort_b:else\n");
-		copy_instru(stacks, rb);
+		copy_instru(stacks, pb);
+		return ;
+	}
+	if (to_rsort(stacks, next_nb_to_place))
+	{
+		dprintf(2, "Coucou\n");
+		if (next_nb_to_place > stacks[B][1])
+			copy_instru(stacks, rrb);
+		else
+			copy_instru(stacks, rb);
 	}
 	copy_instru(stacks, pb);
 }
 
 void	clean_b(int **stacks)
 {
-	int len;
+	int	len;
 
 	len = stacks[B][0];
 	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);

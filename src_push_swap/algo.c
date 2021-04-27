@@ -51,7 +51,7 @@ static void	set_min_max(int *up, int *bottom, int **stacks, int min_max[2])
 
 //verif_nb_move en cas d egalite de move entre up et bot.
 //a voir si "if" ou "else" pour la verif
-static void	algoo(int min_max[2], int **stacks)
+void	loop_algo(int min_max[2], int **stacks)
 {
 	int	up;
 	int	bottom;
@@ -76,7 +76,7 @@ static void	algoo(int min_max[2], int **stacks)
 		else
 			next_nb_to_place = verif_nb_to_move(stacks, up, bottom);
 	}
-sort_b(stacks, next_nb_to_place); // a faire
+	sort_b(stacks, next_nb_to_place);
 	send_instruc(stacks);
 }
 
@@ -96,10 +96,9 @@ void	algo(int **stacks)
 		min_max[1] = i * chunks - 1;
 		loop = chunks;
 		while (loop--)
-			algoo(min_max, stacks);
+			loop_algo(min_max, stacks);
 	}
-sort_last_chunk(stacks);	//voir si [a][0] > 3 !!!
+	sort_last_chunk(stacks);
 	clean_b(stacks);
-	instr_pa(stacks);
 	return ;
 }
