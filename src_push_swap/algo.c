@@ -28,7 +28,7 @@ static void	set_min_max(int *up, int *bottom, int **stacks, int min_max[2])
 
 	i = 0;
 	demi_len = stacks[A][0] / 2;
-	*up = demi_len;
+	*up = stacks[A][0];
 	*bottom = 0;
 	while (i++ <= demi_len)
 	{
@@ -60,8 +60,6 @@ static void	algoo(int min_max[2], int **stacks)
 	set_min_max(&up, &bottom, stacks, min_max);
 	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);
 	stacks[INSTRU][0] = 0;
-	// if (up == (stacks[A][0] - bottom)) 
-	// 	verif_nb_move();
 	next_nb_to_place = -1;
 	if (up)
 	{
@@ -75,10 +73,10 @@ static void	algoo(int min_max[2], int **stacks)
 			bottom_to_b(stacks, stacks[A][0] - bottom);
 			next_nb_to_place = stacks[A][stacks[A][0] - bottom];
 		}
-		// else
-			// next_nb_to_place = verif_nb_move();
+		else
+			next_nb_to_place = verif_nb_to_move(stacks, up, bottom);
 	}
-	sort_b(stacks, next_nb_to_place);
+sort_b(stacks, next_nb_to_place); // a faire
 	send_instruc(stacks);
 }
 
@@ -91,17 +89,17 @@ void	algo(int **stacks)
 	int	min_max[2];
 
 	k_chunks_nbrs(&k, &chunks, stacks);
-dprintf(2, "=>%d\t%d<=\n", k, chunks);
 	i = 0;
-	while (i != k)
+	while (++i < k)
 	{
-		min_max[0] = i * chunks;
-		i++;
+		min_max[0] = (i - 1) * chunks;
 		min_max[1] = i * chunks - 1;
 		loop = chunks;
 		while (loop--)
 			algoo(min_max, stacks);
-break;
 	}
+sort_last_chunk(stacks);	//voir si [a][0] > 3 !!!
+	clean_b(stacks);
+	instr_pa(stacks);
 	return ;
 }

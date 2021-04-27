@@ -31,5 +31,8 @@ void	up_to_b(int **stacks, int to_top);
 void	bottom_to_b(int **stacks, int to_top);
 void	sort_b(int **stacks, int next_nb_to_place);
 void	send_instruc(int **stacks);
+int		verif_nb_to_move(int **stacks, int up, int bot);
+void	sort_last_chunk(int **stacks);
+void	clean_b(int **stacks);
 
 #endif

@@ -29,5 +29,4 @@ void	send_instruc(int **stacks)
 	}
 	free(stacks[INSTRU]);
 	stacks[INSTRU] = NULL;
-	(*arr[pb])(stacks);
 }

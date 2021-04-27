@@ -7,7 +7,7 @@ static void	copy_instru(int **stacks, int new_elem)
 
 	if (new_elem == -1)
 		return ;
-	tmp = (int *)malloc(sizeof(int) * (stacks[INSTRU][0] + 1 + new_elem));
+	tmp = (int *)malloc(sizeof(int) * (stacks[INSTRU][0] + 2));
 	tmp[0] = stacks[INSTRU][0] + 1;
 	tmp[tmp[0]] = new_elem;
 	i = 0;
@@ -33,6 +33,23 @@ void	bottom_to_b(int **stacks, int to_top)
 void	sort_b(int **stacks, int next_nb_to_place)
 {
 	if (to_rsort(stacks, next_nb_to_place))
-		copy_instru(stacks, rrb);
-	(void)stacks;
+		copy_instru(stacks, rb);
+	else
+	{
+// dprintf(2, "sort_b:else\n");
+		copy_instru(stacks, rb);
+	}
+	copy_instru(stacks, pb);
+}
+
+void	clean_b(int **stacks)
+{
+	int len;
+
+	len = stacks[B][0];
+	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);
+	stacks[INSTRU][0] = 0;
+	while (len--)
+		copy_instru(stacks, pa);
+	send_instruc(stacks);
 }
