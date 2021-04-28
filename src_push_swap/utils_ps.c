@@ -19,28 +19,28 @@ static int	to_rsort_algo(int **stacks, int len, int nb, int i)
 {
 	int	compare[2];
 
-	compare[1] = len + 1;
+	compare[1] = INT_MAX;
 	if (stacks[B][len] == 0)
 		compare[0] = (unsigned)(compare[1] - stacks[B][1]);
 	else
 		compare[0] = (unsigned)(stacks[B][len] - stacks[B][1]);
 	if (stacks[B][0] - stacks[B][1] < compare[0])
-		nb++;
+		nb--;
 	while (++i < len)
 	{
-		if (stacks[B][len] == 0)
+		if (stacks[B][i - 1] == 0)
 			compare[0] = (unsigned)(compare[1] - stacks[B][i + 1]);
 		else
 			compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][i + 1]);
 		if (stacks[B][i] - stacks[B][i + 1] < compare[0])
-			nb++;
+			nb--;
 	}
-	if (stacks[B][len] == 0)
+	if (stacks[B][i - 1] == 0)
 		compare[0] = (unsigned)(compare[1] - stacks[B][0]);
 	else
 		compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][0]);
 	if (stacks[B][i] - stacks[B][0] < compare[0])
-		nb++;
+		nb--;
 	return (nb);
 }
 
@@ -51,14 +51,14 @@ int	to_rsort(int **stacks, int next_nb_to_place)
 
 	len = stacks[B][0];
 	stacks[B][0] = next_nb_to_place;
-	ret = to_rsort_algo(stacks, len, 0, 0);
+	ret = to_rsort_algo(stacks, len, len, 0);
 	stacks[B][0] = len;
-	if (ret == len)
-		return (0);
-	return (1);
+	if (!ret)
+		return (1);
+	return (0);
 }
 
-static void	fill_substitute(int **substitute, int **stack, int len)
+void	fill_substitute(int **substitute, int **stack, int len)
 {
 	int	fill[2];
 	int	min[2];

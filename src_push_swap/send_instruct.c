@@ -15,6 +15,22 @@ static void	init_tab_funct(void (*arr[8])(int **stacks))
 	arr[rrr] = instr_rrr;
 }
 
+// void	send_instruc(int **stacks, int sorting)
+// {
+// 	void	(*arr[11])(int **stacks);
+// 	int		i;
+
+// 	init_tab_funct(arr);
+// 	if (stacks[INSTRU][0])
+// 	{
+// 		i = 0;
+// 		while (i++ < stacks[INSTRU][0])
+// 			(*arr[stacks[INSTRU][i]])(stacks);
+// 	}
+// 	free(stacks[INSTRU]);
+// 	stacks[INSTRU] = NULL;
+// }
+
 void	send_instruc(int **stacks)
 {
 	void	(*arr[11])(int **stacks);

@@ -22,18 +22,23 @@ void	instr_rrr(int **stacks);
 
 void	two_nbrs(int **stacks);
 void	three_nbrs(int **stacks);
+void	last_three_nbrs(int **stacks);
 
 int		is_sort(int **stacks);
 int		to_rsort(int **stacks, int new_nb);
 int		*sub_nbr(int **stack);
 void	algo(int **stacks);
-void	up_to_b(int **stacks, int to_top);
+void	top_to_b(int **stacks, int to_top);
 void	bottom_to_b(int **stacks, int to_top);
 void	sort_b(int **stacks, int next_nb_to_place);
 void	send_instruc(int **stacks);
-int		verif_nb_to_move(int **stacks, int up, int bot);
+int		verif_nb_to_move(int **stacks, int top, int bot);
 void	sort_last_chunk(int **stacks);
 void	clean_b(int **stacks);
 void	loop_algo(int min_max[2], int **stacks);
+void	fill_substitute(int **substitute, int **stack, int len);
 
+
+
+		void	write_stacks(int **a);
 #endif

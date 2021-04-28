@@ -6,10 +6,12 @@ void	sort_last_chunk(int **stacks)
 
 	min_max[0] = INT_MIN;
 	min_max[1] = INT_MAX;
-	if (stacks[A][0] == 2)
+	while (stacks[A][0] > 3)
+		loop_algo(min_max, stacks);
+	if (stacks[A][0] < 2)
+		return ;
+	else if (stacks[A][0] == 2)
 		two_nbrs(stacks);
 	else if (stacks[A][0] == 3)
-		three_nbrs(stacks);
-	else
-		loop_algo(min_max, stacks);
+		last_three_nbrs(stacks);
 }

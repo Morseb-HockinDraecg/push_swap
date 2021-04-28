@@ -12,69 +12,65 @@ static void	k_chunks_nbrs(int *r_k, int *r_chunks, int **stacks)
 	if (chunks > (int)chunks)
 		chunks = (int)chunks + 1;
 	if (chunks < 3)
-	{
 		chunks = 3;
-		while ((chunks * (k - 1)) > stacks[A][0])
-			k--;
-	}
+	while ((int)(chunks * (k - 1)) >= stacks[A][0])
+		k--;
 	*r_k = (int)k;
 	*r_chunks = (int)chunks;
 }
 
-static void	set_min_max(int *up, int *bottom, int **stacks, int min_max[2])
+static void	set_top_bottom(int *top, int *bottom, int **stacks, int min_max[2])
 {
 	int	i;
 	int	demi_len;
 
-	i = 0;
 	demi_len = stacks[A][0] / 2;
-	*up = stacks[A][0];
+	*top = stacks[A][0];
 	*bottom = 0;
-	while (i++ <= demi_len)
+	i = 0;
+	while (i++ < demi_len)
 	{
-		if ((unsigned)(stacks[A][i] - min_max[0] <= min_max[1] - min_max[0]))
+		if (stacks[A][i] >= min_max[0] && stacks[A][i] <= min_max[1])
 		{
-			*up = i - 1;
+			*top = i;
 			break ;
 		}
 	}
 	i = stacks[A][0] + 1;
-	while (i-- > demi_len)
+	while (--i > demi_len)
 	{
-		if ((unsigned)(stacks[A][i] - min_max[0] <= min_max[1] - min_max[0]))
+		if (stacks[A][i] >= min_max[0] && stacks[A][i] <= min_max[1])
 		{
-			*bottom = i - 1;
+			*bottom = i;
 			break ;
 		}
 	}
 }
 
-//verif_nb_move en cas d egalite de move entre up et bot.
-//a voir si "if" ou "else" pour la verif
 void	loop_algo(int min_max[2], int **stacks)
 {
-	int	up;
+	int	top;
 	int	bottom;
 	int	next_nb_to_place;
 
-	set_min_max(&up, &bottom, stacks, min_max);
+	set_top_bottom(&top, &bottom, stacks, min_max);
 	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);
 	stacks[INSTRU][0] = 0;
-	next_nb_to_place = -1;
-	if (up)
+	next_nb_to_place = stacks[A][1];
+	if (top != 1)
 	{
-		if (up < (stacks[A][0] - bottom))
+		if (top < (stacks[A][0] - bottom))
 		{
-			up_to_b(stacks, up);
-			next_nb_to_place = stacks[A][up];
+			top_to_b(stacks, top);
+			next_nb_to_place = stacks[A][top];
 		}
-		else if (up > (stacks[A][0] - bottom))
+		else if (top > (stacks[A][0] - bottom) + 1)
 		{
 			bottom_to_b(stacks, stacks[A][0] - bottom);
-			next_nb_to_place = stacks[A][stacks[A][0] - bottom];
+			next_nb_to_place = stacks[A][bottom];
 		}
 		else
-			next_nb_to_place = verif_nb_to_move(stacks, up, bottom);
+			next_nb_to_place = verif_nb_to_move(stacks, top, bottom);
 	}
 	sort_b(stacks, next_nb_to_place);
 	send_instruc(stacks);

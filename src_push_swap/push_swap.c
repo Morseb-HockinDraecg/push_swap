@@ -8,23 +8,23 @@ void	write_stacks(int **stacks)
 	while (i < stacks[A][0] && i < stacks[B][0])
 	{
 		++i;
-		ft_putnbr(stacks[A][i]);
-		write(1, "\t", 1);
-		ft_putnbr(stacks[B][i]);
-		write(1, "\n", 1);
+		dprintf(3, "%d", stacks[A][i]);
+		write(3, "\t", 1);
+		dprintf(3, "%d", stacks[B][i]);
+		write(3, "\n", 1);
 	}
 	while (i < stacks[A][0])
 	{
-		ft_putnbr(stacks[A][++i]);
-		write(1, "\n", 1);
+		dprintf(3, "%d", stacks[A][++i]);
+		write(3, "\n", 1);
 	}
 	while (i < stacks[B][0])
 	{
-		write(1, "\t", 1);
-		ft_putnbr(stacks[B][++i]);
-		write(1, "\n", 1);
+		write(3, "\t", 1);
+		dprintf(3, "%d", stacks[B][++i]);
+		write(3, "\n", 1);
 	}
-	printf("_\t_\nA\tB\n");
+	dprintf(3, "----------\n");
 }
 
 static int	clean_exit(int **stacks, int ret)
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		three_nbrs(stacks);
 	else
 		algo(stacks);
-	if (!is_sort(stacks))
+	// if (!is_sort(stacks))
 		return (clean_exit(stacks, 0));
 	return (0);
 }
