@@ -15,45 +15,65 @@ int	is_sort(int **stacks)
 	return (0);
 }
 
-static int	to_rsort_algo(int **stacks, int len, int nb, int i)
+static int	to_rsort_algo(int **stacks, int len, int min, int max)
 {
-	int	compare[2];
+	int	i;
+	int	*s;
+	int	above;
+	int	below;
 
-	compare[1] = INT_MAX;
-	if (stacks[B][len] == 0)
-		compare[0] = (unsigned)(compare[1] - stacks[B][1]);
-	else
-		compare[0] = (unsigned)(stacks[B][len] - stacks[B][1]);
-	if (stacks[B][0] - stacks[B][1] < compare[0])
-		nb--;
-	while (++i < len)
+	s = stacks[B];
+	i = -1;
+	while (i++ < len)
 	{
-		if (stacks[B][i - 1] == 0)
-			compare[0] = (unsigned)(compare[1] - stacks[B][i + 1]);
+		if (i == 0)
+		{
+			above = s[len];
+			below = s[i + 1];
+		}
+		else if (i == len)
+		{
+			above = s[i - 1];
+			below = s[0];
+		}
 		else
-			compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][i + 1]);
-		if (stacks[B][i] - stacks[B][i + 1] < compare[0])
-			nb--;
+		{
+			above = s[i - 1];
+			below = s[i + 1];
+		}
+		if (s[i] == min)
+			below = min - 1;
+		else if (s[i] == max)
+			above = max + 1;
+		if (s[i] < below || s[i] > above)
+			return (-1);
 	}
-	if (stacks[B][i - 1] == 0)
-		compare[0] = (unsigned)(compare[1] - stacks[B][0]);
-	else
-		compare[0] = (unsigned)(stacks[B][i - 1] - stacks[B][0]);
-	if (stacks[B][i] - stacks[B][0] < compare[0])
-		nb--;
-	return (nb);
+	return (0);
 }
 
 int	to_rsort(int **stacks, int next_nb_to_place)
 {
 	int	len;
 	int	ret;
+	int	min;
+	int	max;
+	int	i;
 
 	len = stacks[B][0];
 	stacks[B][0] = next_nb_to_place;
-	ret = to_rsort_algo(stacks, len, len, 0);
+	min = INT_MAX;
+	max = -1;
+	i = -1;
+	while (++i < len + 1)
+	{
+		if (stacks[B][i] > max)
+			max = stacks[B][i];
+		if (stacks[B][i] < min)
+			min = stacks[B][i];
+	}
+	ret = to_rsort_algo(stacks, len, min, max);
 	stacks[B][0] = len;
-	if (!ret)
+	if (ret < 0)
 		return (1);
 	return (0);
 }
