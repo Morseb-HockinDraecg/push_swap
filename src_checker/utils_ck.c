@@ -29,5 +29,7 @@ int	clean_exit(int **stacks, t_list **lst_cmd, int ret)
 		write(STDOUT_FILENO, "OK\n", cm_strlen("OK\n"));
 	else if (ret == 1)
 		write(STDOUT_FILENO, "KO\n", cm_strlen("KO\n"));
+	else if (ret == 2)
+		write(STDOUT_FILENO, "Error\n", cm_strlen("Error\n"));
 	exit (ret);
 }

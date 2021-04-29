@@ -5,7 +5,7 @@ static void	k_chunks_nbrs(int *r_k, int *r_chunks, int **stacks)
 	float	k;
 	float	chunks;
 
-	k = 0.015 * stacks[A][0] + 3.5;
+	k = 0.018 * stacks[A][0] + 3.5;
 	if (k > (int)k)
 		k = (int)k + 1;
 	chunks = stacks[A][0] / k;

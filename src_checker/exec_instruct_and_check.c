@@ -72,7 +72,7 @@ void	exec_instruc(t_list *lst_cmd, int **stacks)
 		if (rang > -1)
 			(*arr[rang])(stacks);
 		else
-			clean_exit(stacks, &lst_cmd, 1);
+			clean_exit(stacks, &lst_cmd, 2);
 		lst_cmd = lst_cmd->next;
 	}
 }
