@@ -83,18 +83,9 @@ void	clean_b(int **stacks)
 {
 	int	len;
 	int	rang;
-	int	i;
 
 	len = stacks[B][0];
-	i = 0;
-	while (i++ < len)
-	{
-		if (stacks[B][i] == (len -1))
-		{
-			rang = i;
-			break ;
-		}
-	}
+	clean_b_normy(stacks, len, &rang);
 	while (stacks[B][1] != (len - 1))
 	{
 		if (rang < (len / 2))

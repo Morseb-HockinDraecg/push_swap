@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 	stacks[B] = (int *)malloc(sizeof(int) * argc);
 	stacks[B][0] = 0;
 	if (!stacks[A])
-		return (clean_exit(stacks, &lst_cmd, 2));
+		return (clean_exit(stacks, &lst_cmd, 3));
 	take_stdin(&lst_cmd);
 	exec_instruc(lst_cmd, stacks);
 	if (check_order(stacks))

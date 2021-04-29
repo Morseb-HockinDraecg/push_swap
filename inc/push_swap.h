@@ -38,5 +38,6 @@ void	clean_b(int **stacks);
 void	loop_algo(int min_max[2], int **stacks);
 void	fill_substitute(int **substitute, int **stack, int len);
 void	copy_instru(int **stacks, int new_elem);
+void	clean_b_normy(int **stacks, int len, int *rang);
 
 #endif
