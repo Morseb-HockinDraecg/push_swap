@@ -1,6 +1,3 @@
-clear
-make
-
 if [ $# != 0 ]; then
 	ARG=$@; ./bin/push_swap $ARG | ./bin/checker $ARG
 else

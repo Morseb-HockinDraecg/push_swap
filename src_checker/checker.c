@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		return (clean_exit(stacks, &lst_cmd, 2));
 	take_stdin(&lst_cmd);
 	exec_instruc(lst_cmd, stacks);
-	write_stacks(stacks);
+	// write_stacks(stacks);
 	if (check_order(stacks))
 		return (clean_exit(stacks, &lst_cmd, 1));
 	return (clean_exit(stacks, &lst_cmd, 0));

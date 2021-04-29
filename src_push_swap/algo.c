@@ -95,6 +95,6 @@ void	algo(int **stacks)
 			loop_algo(min_max, stacks);
 	}
 	sort_last_chunk(stacks);
-	// clean_b(stacks);
+	clean_b(stacks);
 	return ;
 }

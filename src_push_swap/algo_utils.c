@@ -54,13 +54,13 @@ void	sort_b(int **stacks, int next_nb_to_place)
 		while (loop)
 		{
 
-	// 		if (next_nb_to_place > stacks[B][1])
+			if (next_nb_to_place > stacks[B][1])
 	// 			// frrb(stacks);
 				instr_rrb(stacks);
 	// 			// copy_instru(stacks, rb);
-	// 		else if (next_nb_to_place < stacks[B][1])
+			else if (next_nb_to_place < stacks[B][1])
 	// 			// frb(stacks);
-	// 			instr_rb(stacks);
+				instr_rb(stacks);
 	// 			// copy_instru(stacks, rrb);
 	// // send_instruc(stacks);
 			loop = to_rsort(stacks, next_nb_to_place);
@@ -74,7 +74,7 @@ void	clean_b(int **stacks)
 	int	len;
 
 	len = stacks[B][0];
-	while (stacks[B][1] != len)
+	while (stacks[B][1] != (len - 1))
 		instr_rrb(stacks);
 	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);
 	stacks[INSTRU][0] = 0;

@@ -6,7 +6,7 @@ void	sort_last_chunk(int **stacks)
 
 	min_max[0] = INT_MIN;
 	min_max[1] = INT_MAX;
-	while (stacks[A][0] > 3)
+	while (stacks[A][0] > 0)
 		loop_algo(min_max, stacks);
 	if (stacks[A][0] < 2)
 		return ;
