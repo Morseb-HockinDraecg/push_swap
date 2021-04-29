@@ -38,7 +38,4 @@ void	clean_b(int **stacks);
 void	loop_algo(int min_max[2], int **stacks);
 void	fill_substitute(int **substitute, int **stack, int len);
 
-
-
-		void	write_stacks(int **a);
 #endif

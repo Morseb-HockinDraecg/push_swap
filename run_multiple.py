@@ -4,8 +4,8 @@ import statistics
 import os
 import shutil
 
-range_start = -1000
-range_stop = 1000
+range_start = -2000
+range_stop = 2000
 longueur_liste = 500
 nombre_executions = 10
 dir_name = 'results'
