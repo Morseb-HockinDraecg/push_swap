@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	copy_instru(int **stacks, int new_elem)
+void	copy_instru(int **stacks, int new_elem)
 {
 	int	*tmp;
 	int	i;
@@ -18,24 +18,43 @@ static void	copy_instru(int **stacks, int new_elem)
 	stacks[INSTRU] = tmp;
 }
 
-void	top_to_b(int **stacks, int to_top)
+static void	rang_r(int **stacks, int *rang_ra, int *rang_rra)
 {
-	if (to_top == 2)
-		copy_instru(stacks, sa);
-	else
+	int	i;
+
+	i = 0;
+	while (i++ < stacks[INSTRU][0])
 	{
-		while (--to_top)
-			copy_instru(stacks, ra);
+		if (stacks[INSTRU][i] == ra)
+			*rang_ra = i;
+		else if (stacks[INSTRU][i] == rra)
+			*rang_rra = i;
 	}
 }
 
-void	bottom_to_b(int **stacks, int to_top)
+static void	sort_b_loop(int **stacks, int next_nb_to_place)
 {
-	copy_instru(stacks, rra);
-	if (to_top)
+	int	rang_ra;
+	int	rang_rra;
+
+	rang_ra = -1;
+	rang_rra = -1;
+	rang_r(stacks, &rang_ra, &rang_rra);
+	if (next_nb_to_place > stacks[B][1])
 	{
-		while (to_top--)
-			copy_instru(stacks, rra);
+		frrb(stacks);
+		if (rang_rra == -1)
+			copy_instru(stacks, rrb);
+		else
+			stacks[INSTRU][rang_rra] = rrr;
+	}
+	else if (next_nb_to_place < stacks[B][1])
+	{
+		frb(stacks);
+		if (rang_ra == -1)
+			copy_instru(stacks, rb);
+		else
+			stacks[INSTRU][rang_ra] = rr;
 	}
 }
 
@@ -53,16 +72,7 @@ void	sort_b(int **stacks, int next_nb_to_place)
 		loop = 1;
 		while (loop)
 		{
-
-			if (next_nb_to_place > stacks[B][1])
-	// 			// frrb(stacks);
-				instr_rrb(stacks);
-	// 			// copy_instru(stacks, rb);
-			else if (next_nb_to_place < stacks[B][1])
-	// 			// frb(stacks);
-				instr_rb(stacks);
-	// 			// copy_instru(stacks, rrb);
-	// // send_instruc(stacks);
+			sort_b_loop(stacks, next_nb_to_place);
 			loop = to_rsort(stacks, next_nb_to_place);
 		}
 	}
@@ -72,10 +82,32 @@ void	sort_b(int **stacks, int next_nb_to_place)
 void	clean_b(int **stacks)
 {
 	int	len;
+	int	rang;
+	int	i;
 
 	len = stacks[B][0];
+	i = 0;
+	while (i++ < len)
+	{
+		if (stacks[B][i] == (len -1))
+		{
+			rang = i;
+			break ;
+		}
+	}
 	while (stacks[B][1] != (len - 1))
-		instr_rrb(stacks);
+	{
+		if (rang < (len / 2))
+		{
+			frb(stacks);
+			write(1, "rb\n", cm_strlen("rb\n"));
+		}
+		else
+		{
+			frrb(stacks);
+			write(1, "rrb\n", cm_strlen("rrb\n"));
+		}
+	}
 	stacks[INSTRU] = (int *)malloc(sizeof(int) * 1);
 	stacks[INSTRU][0] = 0;
 	while (len--)

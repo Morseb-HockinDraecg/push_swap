@@ -1,0 +1,1 @@
+python3 pyviz.py `ruby -e "puts (-20..20).to_a.shuffle.join(' ')"`

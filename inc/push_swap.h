@@ -37,5 +37,6 @@ void	sort_last_chunk(int **stacks);
 void	clean_b(int **stacks);
 void	loop_algo(int min_max[2], int **stacks);
 void	fill_substitute(int **substitute, int **stack, int len);
+void	copy_instru(int **stacks, int new_elem);
 
 #endif

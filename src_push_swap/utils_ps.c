@@ -42,25 +42,20 @@ static int	to_rsort_algo(int **stacks, int len, int min, int max)
 {
 	int	i;
 	int	*s;
-	int	above;
-	int	below;
 	int	*normy;
 
-	above = 0;
-	below = 0;
 	normy = (int *)malloc(sizeof(int) * 4);
 	s = stacks[B];
 	i = -1;
 	while (i++ < len)
 	{
-		normy[0] = above;
-		normy[1] = below;
 		normy[2] = min;
 		normy[3] = max;
 		to_rsort_algo_loop(s, len, &normy, i);
 		if (s[i] < normy[1] || s[i] > normy[0])
 			return (-1);
 	}
+	free(normy);
 	return (0);
 }
 

@@ -8,12 +8,12 @@ void	instr_rra(int **stacks)
 
 void	instr_rrb(int **stacks)
 {
-	frrb(stacks);
 	write(1, "rrb\n", cm_strlen("rrb\n"));
+	(void)stacks;
 }
 
 void	instr_rrr(int **stacks)
 {
-	frrr(stacks);
+	frra(stacks);
 	write(1, "rrr\n", cm_strlen("rrr\n"));
 }

@@ -20,6 +20,7 @@ SRC_P	:= $(SRC_P_DIR)push_swap.c \
 	$(SRC_P_DIR)utils_ps1.c \
 	$(SRC_P_DIR)algo.c \
 	$(SRC_P_DIR)algo_utils.c \
+	$(SRC_P_DIR)algo_utils2.c \
 	$(SRC_P_DIR)send_instruct.c \
 	$(SRC_P_DIR)last_chunk.c \
 	$(SRC_P_DIR)ez_algo.c
