@@ -11,9 +11,7 @@ static void	k_chunks_nbrs(int *r_k, int *r_chunks, int **stacks)
 	chunks = stacks[A][0] / k;
 	if (chunks > (int)chunks)
 		chunks = (int)chunks + 1;
-	if (chunks < 3)
-		chunks = 3;
-	while ((int)(chunks * (k - 1)) >= stacks[A][0])
+	while ((int)(chunks * (k - 1) + chunks) >= stacks[A][0])
 		k--;
 	*r_k = (int)k;
 	*r_chunks = (int)chunks;
